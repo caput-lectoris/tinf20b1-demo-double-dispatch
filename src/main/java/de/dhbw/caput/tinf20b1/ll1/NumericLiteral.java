@@ -40,6 +40,11 @@ class NumericLiteral extends ArithmeticExpression {
 	}
 	
 	@Override
+	Datatype inferTypes( ){
+		return TYPE;
+	}
+	
+	@Override
 	public String toString( ){
 		return LEXEME;
 	}

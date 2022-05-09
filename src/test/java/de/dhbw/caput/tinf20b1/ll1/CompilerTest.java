@@ -73,6 +73,15 @@ final class CompilerTest {
 	}
 	
 	@Test
+	void typeInference( ){
+		ArithmeticParser parser = new ArithmeticParser( LEXER );
+		ArithmeticExpression expression = parser.parse( "-[5/1f]+[5/1]^2-3" );
+		assertThat( expression.type ).isNull( );
+		expression.inferTypes( );
+		assertThat( expression.type ).isEqualTo( Datatype.F32 );
+	}
+	
+	@Test
 	void codeGeneration( ){
 		ArithmeticParser parser = new ArithmeticParser( LEXER );
 		ArithmeticExpression expression = parser.parse( "-[5/1f]+[5/1]^2-3" );

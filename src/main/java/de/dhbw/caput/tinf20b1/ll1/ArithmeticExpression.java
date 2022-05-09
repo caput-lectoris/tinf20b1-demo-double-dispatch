@@ -8,6 +8,14 @@ abstract class ArithmeticExpression {
 		super( );
 	}
 	
+	void set( Datatype type ){
+		this.type = type;
+	}
+	
+	Datatype type( ){
+		return type;
+	}
+	
 	abstract String generateJavaBytecode( );
 	abstract Datatype inferTypes( );
 	

@@ -33,6 +33,12 @@ class UnaryOperation extends ArithmeticExpression {
 	}
 	
 	@Override
+	Datatype inferTypes( ){
+		type = BASE.inferTypes();
+		return type;
+	}
+	
+	@Override
 	public String toString( ){
 		return String.format( "%c(%s)", OPERATION.OPERATOR, BASE );
 	}

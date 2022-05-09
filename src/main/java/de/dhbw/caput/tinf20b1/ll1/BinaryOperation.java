@@ -49,6 +49,13 @@ class BinaryOperation extends ArithmeticExpression {
 	}
 	
 	@Override
+	public Datatype inferTypes( ){
+		Datatype left  = LEFT.inferTypes();
+		Datatype right = RIGHT.inferTypes();
+		return type = Datatype.getDominantType( left, right );
+	}
+	
+	@Override
 	public String toString( ){
 		return String.format( "(%s %c %s)", LEFT, OPERATION.OPERATOR, RIGHT );
 	}
