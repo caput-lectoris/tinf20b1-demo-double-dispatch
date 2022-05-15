@@ -77,7 +77,7 @@ final class CompilerTest {
 		ArithmeticParser parser = new ArithmeticParser( LEXER );
 		ArithmeticExpression expression = parser.parse( "-[5/1f]+[5/1]^2-3" );
 		assertThat( expression.type ).isNull( );
-		expression.inferTypes( );
+		TypeInferer.runOn( expression );
 		assertThat( expression.type ).isEqualTo( Datatype.F32 );
 	}
 	
