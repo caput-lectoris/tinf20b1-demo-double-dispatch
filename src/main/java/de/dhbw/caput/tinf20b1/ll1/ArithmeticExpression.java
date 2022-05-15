@@ -16,6 +16,8 @@ abstract class ArithmeticExpression {
 		return type;
 	}
 	
+	abstract <T> T accept( AstTraverser<T> traverser );
+	
 	abstract String generateJavaBytecode( );
 	abstract Datatype inferTypes( );
 	

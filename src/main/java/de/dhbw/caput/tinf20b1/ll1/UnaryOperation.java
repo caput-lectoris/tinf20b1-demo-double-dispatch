@@ -5,7 +5,7 @@ class UnaryOperation extends ArithmeticExpression {
 	enum Type {
 		NEGATION('-', "ineg");
 
-		private final String INSTRUCTION;
+		final String INSTRUCTION;
 		private final char OPERATOR;
 
 		private Type( char operator, String instruction ){
@@ -41,6 +41,11 @@ class UnaryOperation extends ArithmeticExpression {
 	@Override
 	public String toString( ){
 		return String.format( "%c(%s)", OPERATION.OPERATOR, BASE );
+	}
+	
+	@Override
+	<T> T accept( AstTraverser<T> traverser ){
+		return traverser.visit( this );
 	}
 
 }

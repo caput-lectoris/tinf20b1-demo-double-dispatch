@@ -4,9 +4,9 @@ import de.dhbw.caput.tinf20b1.thompson.Token;
 
 class NumericLiteral extends ArithmeticExpression {
 	
-	private final Datatype TYPE;
+	final Datatype TYPE;
 	private final String LEXEME;
-	private final String VALUE;
+	final String VALUE;
 	
 	NumericLiteral( Token token ){
 		super( );
@@ -47,6 +47,11 @@ class NumericLiteral extends ArithmeticExpression {
 	@Override
 	public String toString( ){
 		return LEXEME;
+	}
+	
+	@Override
+	<T> T accept( AstTraverser<T> traverser ){
+		return traverser.visit( this );
 	}
 
 }

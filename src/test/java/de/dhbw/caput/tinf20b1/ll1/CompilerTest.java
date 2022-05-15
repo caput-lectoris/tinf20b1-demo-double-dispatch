@@ -85,7 +85,7 @@ final class CompilerTest {
 	void codeGeneration( ){
 		ArithmeticParser parser = new ArithmeticParser( LEXER );
 		ArithmeticExpression expression = parser.parse( "-[5/1f]+[5/1]^2-3" );
-		String code = expression.generateJavaBytecode();
+		String code = JavaBytecodeGenerator.runOn(expression);
 		assertThat( code ).isEqualTo(
 				"iconst_5\n" +
 				"fconst_1\n" +

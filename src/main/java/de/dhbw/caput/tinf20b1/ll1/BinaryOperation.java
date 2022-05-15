@@ -6,7 +6,7 @@ class BinaryOperation extends ArithmeticExpression {
 		ADDITION( '+', "iadd" ), SUBTRACTION( '-', "isub" ), MULTIPLICATION( '*', "imul" ),
 		DIVISION( '/', "idiv" ), POWER( '^', "ipow" );
 
-		private final String INSTRUCTION;
+		final String INSTRUCTION;
 		private final char OPERATOR;
 
 		private Type( char operator, String instruction ){
@@ -58,6 +58,11 @@ class BinaryOperation extends ArithmeticExpression {
 	@Override
 	public String toString( ){
 		return String.format( "(%s %c %s)", LEFT, OPERATION.OPERATOR, RIGHT );
+	}
+
+	@Override
+	<T> T accept( AstTraverser<T> traverser ){
+		return traverser.visit( this );
 	}
 
 }
